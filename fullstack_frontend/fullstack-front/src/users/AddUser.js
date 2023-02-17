@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AddUser() {
 
@@ -19,11 +19,11 @@ export default function AddUser() {
         setUser({...user,[e.target.name]: e.target.value})
     }
 
-    const onSubmit=async(e)=>{
+    const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post("localhost:8080/user", user)
-        navigate("/")
-    }
+        await axios.post("http://localhost:8080/user", user);
+        navigate("/");
+      };
 
   return (
     <div className="container">
@@ -63,7 +63,7 @@ export default function AddUser() {
                 </div>
 
                 <button type="submit" className="btn btn-outline-primary">Submit</button>
-                <button type="submit" className="btn btn-outline-danger mx-2">Cancel</button>
+                <Link type="submit" className="btn btn-outline-danger mx-2" to="/">Cancel</Link>
                 </form>
             </div>
         </div>
